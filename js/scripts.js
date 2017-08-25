@@ -1,4 +1,22 @@
 //back-end
+function check(box){
+  if(box===true){
+    box = false;
+  }else if(box===false){
+  box = true;
+  }
+  return box;
+};
+
+function getTopping(input,box,array){
+  box = check(box);
+  var oneTopping = $("#"+input).val();
+  if(box){
+    array.splice(array.indexOf(oneTopping),1);
+  }else if(!box){
+    array.push(oneTopping);
+  }
+}
 function pizza(pizzaType,pizzaSize,cheese,sauce){
   this.pizzaType = pizzaType;
   this.pizzaSize = pizzaSize;
@@ -66,6 +84,45 @@ $(document).ready(function(){
       $("#priceSection").text("$" + sizeTotal);
     }
   });
+  //pizza toppings
+  var box1 = true;
+  $("input#tomatoes").change(function() {
+    getTopping("tomatoes",box1,toppings);
+  });
+  var box2 = true;
+  $("input#sundried").change(function() {
+    getTopping("sundried",box2,toppings);
+    alert(toppings);
+  });
+  var box3 = true;
+  $("input#onions").change(function() {
+    getTopping("onions",box3,toppings);
+  });
+  var box4 = true;
+  $("input#tempeh").change(function() {
+    getTopping("tempeh",box4,toppings);
+  });
+  var box5 = true;
+  $("input#peppers").change(function() {
+    getTopping("peppers",box5,toppings);
+  });
+  var box6 = true;
+  $("input#jalapenos").change(function() {
+    getTopping("jalapenos",box6,toppings);
+  });
+  var box7 = true;
+  $("input#basil").change(function() {
+    getTopping("basil",box7,toppings);
+  });
+  var box8 = true;
+  $("input#garlic").change(function() {
+    getTopping("garlic",box8,toppings);
+  });
+  var box9 = true;
+  $("input#tofu").change(function() {
+    getTopping("tofu",box9,toppings);
+  });
+
   $("form#orderForm").submit(function(event) {
     event.preventDefault();
   });

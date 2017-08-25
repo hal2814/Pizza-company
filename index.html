@@ -75,21 +75,27 @@
                 </div>
                 <div id="toppingsSection">
                   <hr>
-                  <label for="selectToppings">Select toppings: </label>
-                  <select class="form-control" id="selectToppings">
-                    <option></option>
-                    <option>Fresh Tomatoes</option>
-                    <option>Sundried Tomatoes</option>
-                    <option>Yellow onions</option>
-                    <option>Tempeh</option>
-                    <option>Red and yellow peppers</option>
-                    <option>Jalapenos</option>
-                    <option>Basil</option>
-                    <option>Roasted Garlic</option>
-                    <option>Tofu riccotta</option>
-                  </select>
-                </div>
+                  <form id="toppingsForm">
+                    <input type="checkbox" name="top" id="tomatoes" value="Fresh Tomatoes">Fresh Tomatoes<br>
 
+                    <input type="checkbox" name="top" id="sundried" value="Sundried Tomatoes">Sundried Tomatoes<br>
+
+                    <input type="checkbox" name="top" id="onions" value="Yellow onions">Yellow onions<br>
+
+                    <input type="checkbox" name="top" id="tempeh" value="Tempeh">Tempeh<br>
+
+                    <input type="checkbox" name="top" id="peppers" value="Red and yellow peppers">Red and yellow peppers<br>
+
+                    <input type="checkbox" name="top" id="jalapenos" value="Jalapenos">Jalapenos<br>
+
+                    <input type="checkbox" name="top" id="basil" value="Basil">Basil<br>
+
+                    <input type="checkbox" name="top" id="garlic" value="Roasted Garlic">Roasted Garlic<br>
+
+                    <input type="checkbox" name="top" id="tofu" value="Tofu riccotta">Tofu riccotta<br>
+
+                  </form>
+                </div>
               </div>
                <button id="orderButton" type="submit" class="btn btn-success">Place order</button>
             </form>
