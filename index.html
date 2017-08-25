@@ -32,7 +32,7 @@
               <p class="price">$13</p>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="borderSection">
             <form id="orderForm">
               <div class="form-group">
@@ -45,16 +45,19 @@
                   <option>The Downtown</option>
                   <option>Build a peetz</option>
                 </select>
-                <hr>
+
+                <div id="sizeSection">
+                  <hr>
                   <label for="selectPizzaSize">Select pizza size: </label>
                   <select class="form-control" id="selectPizzaSize">
                     <option>Small (13" pie)</option>
                     <option>Medium (15" pie + $6)</option>
                     <option>Large (18" pie + $11)</option>
                   </select>
-                  <hr>
-                <div id="buildPizzaSection">
+                </div>
 
+                <div id="buildPizzaSection">
+                  <hr>
                   <label for="selectSauce">Select sauce: </label>
                   <select class="form-control" id="selectSauce">
                     <option></option>
@@ -69,9 +72,9 @@
                     <option>Follow Your Heart (+ $1)</option>
                     <option>Diaya (+ $1)</option>
                   </select>
-                  <hr>
                 </div>
                 <div id="toppingsSection">
+                  <hr>
                   <label for="selectToppings">Select toppings: </label>
                   <select class="form-control" id="selectToppings">
                     <option></option>
@@ -88,8 +91,17 @@
                 </div>
 
               </div>
-               <button type="submit" class="btn btn-success">Place order</button>
+               <button id="orderButton" type="submit" class="btn btn-success">Place order</button>
             </form>
+          </div>
+        </div>
+        <div id="outputSection" class="col-md-4">
+          <div class="well">
+            <h3>Total: </h3>
+            <h3><span id="priceSection"></span></h3>
+          </div>
+          <div id="receiptSection">
+
           </div>
         </div>
       </div>
