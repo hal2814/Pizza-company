@@ -5,21 +5,36 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/scripts.js"></script>
-    <title>Pizza Company</title>
+    <title>Portland Plant Pizza Company</title>
   </head>
   <body>
     <div class="container">
-      <h1>Pizza Company</h1>
+      <h1>Portland Plant Pizza Company</h1>
       <div class="row">
         <div class="col-md-4">
           <div class="borderSection">
-
+            <h2>Menu </h2>
+            <hr>
+            <h3><u>The Kenton</u></h3>
+              <p>Pesto, housemade cashew mozz, sun-dried tomatoes, purple kale, carmelized onions, pine nuts</p>
+              <p>$16</p>
+            <h3><u>The Goose Hollow</u></h3>
+              <p>Puree carmelized onion sauce, spicy buffalo style cauliflower, fried onions, red peppers</p>
+              <p>$15</p>
+            <h3><u>The Pearl</u></h3>
+              <p>Curried tempeh, red and yellow peppers, red sauce, grated fresh tumeric and ginger root, roasted garlic </p>
+              <p>$14</p>
+            <h3><u>The Downtown</u></h3>
+              <p>,Red sauce, housemade cashew mozz, fresh basil, thin sliced heirloom tomatoes, extra virgin olive oil</p>
+              <p>$14</p>
+            <h3><u>Build your own</u></h3>
+              <p>Choose your sauce, "cheese", and two toppings (for additional toppings $2 each)</p>
+              <p>$13</p>
           </div>
         </div>
         <div class="col-md-6">
           <div class="borderSection">
             <div class="form-group">
-
               <label for="selectPizza">Select your pizza</label>
               <select class="form-control" id="selectPizza">
                 <option></option>
@@ -28,16 +43,15 @@
                 <option>The Pearl</option>
                 <option>The Downtown</option>
               </select>
-
-
+              <hr>
                 <label for="selectPizzaSize">Select your pizza size: </label>
                 <select class="form-control" id="selectPizzaSize">
                   <option></option>
                   <option>Small (12" pie)</option>
-                  <option>Medium (15" pie)</option>
-                  <option>Large (18" pie)</option>
+                  <option>Medium (15" pie + $6)</option>
+                  <option>Large (18" pie + $11)</option>
                 </select>
-
+                <hr>
               <div id="buildPizzaSection">
 
                 <label for="selectSauce">Select your sauce: </label>
@@ -46,15 +60,15 @@
                   <option>Tomatoe red sauce</option>
                   <option>Pesto sauce (+ $3)</option>
                 </select>
-
+                <hr>
                 <label for="selectCheese">Select your "cheese": </label>
                 <select class="form-control" id="selectCheese">
                   <option></option>
-                  <option>Housemade cashew cheese</option>
+                  <option>Housemade cashew Mozz</option>
                   <option>Follow Your Heart (+ $1)</option>
                   <option>Diaya (+ $1)</option>
                 </select>
-
+                <hr>
                 <div id="toppingsSection">
                   <label id="additionalToppings" for="selectToppings">Select your toppings: </label>
                   <label id="buildToppings" for="selectToppings">Select your toppings: </label>
