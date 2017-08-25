@@ -8,7 +8,68 @@
     <title>Pizza Company</title>
   </head>
   <body>
-    <h1>Pizza Company</h1>
+    <div class="container">
+      <h1>Pizza Company</h1>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="borderSection">
 
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="borderSection">
+            <div class="form-group">
+
+              <label for="selectPizza">Select your pizza</label>
+              <select class="form-control" id="selectPizza">
+                <option></option>
+                <option>The Kenton</option>
+                <option>The Goose Hollow</option>
+                <option>The Pearl</option>
+                <option>The Downtown</option>
+              </select>
+
+
+                <label for="selectPizzaSize">Select your pizza size: </label>
+                <select class="form-control" id="selectPizzaSize">
+                  <option></option>
+                  <option>Small (12" pie)</option>
+                  <option>Medium (15" pie)</option>
+                  <option>Large (18" pie)</option>
+                </select>
+
+              <div id="buildPizzaSection">
+
+                <label for="selectSauce">Select your sauce: </label>
+                <select class="form-control" id="selectSauce">
+                  <option></option>
+                  <option>Tomatoe red sauce</option>
+                  <option>Pesto sauce (+ $3)</option>
+                </select>
+
+                <label for="selectCheese">Select your "cheese": </label>
+                <select class="form-control" id="selectCheese">
+                  <option></option>
+                  <option>Housemade cashew cheese</option>
+                  <option>Follow Your Heart (+ $1)</option>
+                  <option>Diaya (+ $1)</option>
+                </select>
+
+                <div id="toppingsSection">
+                  <label id="additionalToppings" for="selectToppings">Select your toppings: </label>
+                  <label id="buildToppings" for="selectToppings">Select your toppings: </label>
+                  <select class="form-control" id="selectToppings">
+                    <option></option>
+                    <option>Small (12" pie)</option>
+                    <option>Medium (15" pie)</option>
+                    <option>Large (18" pie)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

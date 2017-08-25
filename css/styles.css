@@ -1,0 +1,9 @@
+.borderSection{
+  width: 100%;
+  border: 2px solid black;
+}
+
+
+#additionalToppings{
+  display: none;
+}
