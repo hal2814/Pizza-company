@@ -11,6 +11,18 @@ div{
   display: none;
 }
 
+#buildPizzaSection{
+  display: none;
+}
+
+#toppingsSection{
+  display: none;
+}
 .form-control{
   width: 40%;
+}
+
+.price{
+  text-align: right;
+  padding-right: 40px;
 }
