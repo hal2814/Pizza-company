@@ -9,6 +9,7 @@ function check(box){
 };
 
 function getTopping(input,box,array){
+  box = box;
   box = check(box);
   var oneTopping = $("#"+input).val();
   if(box){
@@ -16,6 +17,8 @@ function getTopping(input,box,array){
   }else if(!box){
     array.push(oneTopping);
   }
+  return box;
+  box = check(box);
 }
 function pizza(pizzaType,pizzaSize,cheese,sauce){
   this.pizzaType = pizzaType;
@@ -87,40 +90,39 @@ $(document).ready(function(){
   //pizza toppings
   var box1 = true;
   $("input#tomatoes").change(function() {
-    getTopping("tomatoes",box1,toppings);
+    box1 = getTopping("tomatoes",box1,toppings);
   });
   var box2 = true;
   $("input#sundried").change(function() {
-    getTopping("sundried",box2,toppings);
-    alert(toppings);
+    box2 = getTopping("sundried",box2,toppings);
   });
   var box3 = true;
   $("input#onions").change(function() {
-    getTopping("onions",box3,toppings);
+    box3 = getTopping("onions",box3,toppings);
   });
   var box4 = true;
   $("input#tempeh").change(function() {
-    getTopping("tempeh",box4,toppings);
+    box4 = getTopping("tempeh",box4,toppings);
   });
   var box5 = true;
   $("input#peppers").change(function() {
-    getTopping("peppers",box5,toppings);
+    box5 = getTopping("peppers",box5,toppings);
   });
   var box6 = true;
   $("input#jalapenos").change(function() {
-    getTopping("jalapenos",box6,toppings);
+    box6 = getTopping("jalapenos",box6,toppings);
   });
   var box7 = true;
   $("input#basil").change(function() {
-    getTopping("basil",box7,toppings);
+    box7 = getTopping("basil",box7,toppings);
   });
   var box8 = true;
   $("input#garlic").change(function() {
-    getTopping("garlic",box8,toppings);
+    box8 = getTopping("garlic",box8,toppings);
   });
   var box9 = true;
   $("input#tofu").change(function() {
-    getTopping("tofu",box9,toppings);
+    box9 = getTopping("tofu",box9,toppings);
   });
 
   $("form#orderForm").submit(function(event) {
