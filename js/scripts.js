@@ -2,6 +2,7 @@
 
 function price(initialTotal,sizeTotal,toppingTotal,sauceTotal,cheeseTotal){
   $("#priceSection").text("$" + (initialTotal+sizeTotal+toppingTotal+sauceTotal+cheeseTotal));
+  return initialTotal+sizeTotal+toppingTotal+sauceTotal+cheeseTotal;
 }
 
 function check(box){
@@ -25,14 +26,64 @@ function getTopping(input,box,array,toppingPrice){
   return box;
 }
 
-function pizza(pizzaType,pizzaSize,cheese,sauce){
+function pizza(pizzaType,pizzaSize,cheese,sauce,price){
   this.pizzaType = pizzaType;
   this.pizzaSize = pizzaSize;
   this.toppings = [];
   this.cheese = cheese;
   this.sauce = sauce;
+  this.price = price;
 };
 
+pizza.prototype.saveToppings = function (array) {
+  for(var i=0;i<array.length;++i){
+    this.toppings.push(array[i]);
+  }
+};
+
+pizza.prototype.printPeetz = function () {
+  return "<p>Your order for a "+pizza.pizzaSize+" "+pizza.pizzaType+", "+pizza.toppings+"</p><p>Your account has been charged $<u>"+pizza.price+"</u></p><p>Your order will be ready in approximately 45 minutes</p>";
+};
+
+pizza.prototype.pizzaTypePrint = function(){
+  return this.pizzaType;
+};
+pizza.prototype.pizzaSizePrint = function(){
+  return this.pizzaSize;
+};
+pizza.prototype.toppingsPrint = function(){
+  return this.toppings;
+};
+pizza.prototype.cheesePrint = function(){
+  return this.cheese;
+};
+pizza.prototype.saucePrint = function(){
+  return this.sauce;
+};
+pizza.prototype.pricePrint = function(){
+  return this.price;
+};
+
+
+function receiptBuild(section,pizza) {
+  alert("order placed!");
+  $("#"+section).append("<p>Your order for a "+pizza.pizzaSize+" "+pizza.pizzaType+" with "+pizza.cheese+", "+pizza.sauce+", "+pizza.toppings+"</p><p>Your account has been charged $<u>"+pizza.price+"</u></p><p>Your order will be ready in approximately 45 minutes</p>");
+};
+
+// pizza.prototype.receiptBuild = function (section) {
+//   alert("order placed!");
+//   $("#"+section).append("<p>Your order for a "+this.pizzaSize+" "+this.pizzaType+" with "+this.cheese+", "+this.sauce+", "+this.toppings+"</p><p>Your account has been charged $<u>"+this.price+"</u></p><p>Your order will be ready in approximately 45 minutes</p>");
+// };
+
+function receipt(section, pizza) {
+  alert("order placed!");
+  $("#"+section).append("<p>Your order for a "+pizza.pizzaSize+" "+pizza.pizzaType+", "+pizza.toppings+"</p><p>Your account has been charged $<u>"+pizza.price+"</u></p><p>Your order will be ready in approximately 45 minutes</p>");
+};
+
+// pizza.prototype.receipt = function (section) {
+//   alert("order placed!");
+//   $("#"+section).append("<p>Your order for a "+this.pizzaSize+" "+this.pizzaType+", "+this.toppings+"</p><p>Your account has been charged $<u>"+this.price+"</u></p><p>Your order will be ready in approximately 45 minutes</p>");
+// };
 
 //front-end
 $(document).ready(function(){
@@ -49,11 +100,12 @@ $(document).ready(function(){
   var cheeseTotal = 0;
 
   var pizzaType;
-  var sauce;
-  var cheese;
-  var topping;
+  var size = "Small (13 inch pie)";
+  var sauce = "Tomatoe red sauce";
+  var cheese = "Housemade cashew Mozz";
+  //var topping;
 
-  //pizza type
+  //select type of pizza
   $("select#selectPizza").change(function() {
     pizzaType = $("#selectPizza").val();
     $("#outputSection").show();
@@ -80,12 +132,11 @@ $(document).ready(function(){
       initialTotal = pearlDowntown;
       price(initialTotal,sizeTotal,toppingTotal,sauceTotal,cheeseTotal);
     }
-    //sizeTotal = initialTotal;
   });
 
-  //pizza size
+  //select size
   $("select#selectPizzaSize").change(function() {
-    var size = $("#selectPizzaSize").val();
+    size = $("#selectPizzaSize").val();
     if(size==="Medium (15 inch pie + $6)"){
       sizeTotal = 6;
       price(initialTotal,sizeTotal,toppingTotal,sauceTotal,cheeseTotal);
@@ -97,7 +148,7 @@ $(document).ready(function(){
       price(initialTotal,sizeTotal,toppingTotal,sauceTotal,cheeseTotal);
     }
   });
-  //pizza toppings
+  //select toppings
   var box1 = true;
   $("input#tomatoes").change(function() {
     box1 = getTopping("tomatoes",box1,toppings,toppingTotal);
@@ -160,7 +211,7 @@ $(document).ready(function(){
     price(initialTotal,sizeTotal,toppingTotal,sauceTotal,cheeseTotal);
 
   });
-
+//select sauce
   $("select#selectSauce").change(function() {
     sauce = $("#selectSauce").val();
     if(sauce === "Pesto sauce (+ $3)"){
@@ -170,7 +221,7 @@ $(document).ready(function(){
     }
     price(initialTotal,sizeTotal,toppingTotal,sauceTotal,cheeseTotal);
   });
-
+//select cheese
   $("select#selectCheese").change(function() {
     cheese = $("#selectCheese").val();
     if(cheese === "Follow Your Heart (+ $1)" || cheese === "Diaya (+ $1)"){
@@ -180,8 +231,15 @@ $(document).ready(function(){
     }
     price(initialTotal,sizeTotal,toppingTotal,sauceTotal,cheeseTotal);
   });
-
+//place order
   $("form#orderForm").submit(function(event) {
     event.preventDefault();
+    var pizzaOrdered = new pizza(pizzaType,size,cheese,sauce,price(initialTotal,sizeTotal,toppingTotal,sauceTotal,cheeseTotal));
+    pizzaOrdered.saveToppings(toppings);
+    if(pizzaType !== "Build a peetz"){
+      $("#receiptSection").append("<h3>You ordered:</h3><p> "+pizzaOrdered.pizzaSizePrint()+" "+pizzaOrdered.pizzaTypePrint()+" with toppings of "+pizzaOrdered.toppingsPrint()+"</p><p>Your account has been charged $<u>"+pizzaOrdered.pricePrint()+".00</u></p><p>Your order will be ready in approximately 45 minutes</p>");
+    }else{
+      $("#receiptSection").append("<h3>You ordered:</h3><p> "+pizzaOrdered.pizzaSizePrint()+" "+pizzaOrdered.pizzaTypePrint()+" with "+pizzaOrdered.cheesePrint()+", "+pizzaOrdered.saucePrint()+", "+pizzaOrdered.toppingsPrint()+"</p><p>Your account has been charged $<u>"+pizzaOrdered.pricePrint()+".00</u></p><p>Your order will be ready in approximately 45 minutes</p>");
+    }
   });
 });
