@@ -20,51 +20,6 @@ function getTopping(input,box,array,toppingPrice){
   return box;
 }
 
-function priceTopping(box,toppingPrice){
-  if(box){
-    toppingPrice -= 2;
-  }else if(!box){
-    toppingPrice += 2;
-  }
-  console.log("price topping variable: " + toppingPrice);
-  return toppingPrice;
-}
-
-function priceTopping2(box){
-  var num = 0;
-  if(box){
-    num -= 2;
-  }else if(!box){
-    num += 2;
-  }
-  console.log("price topping variable: " + num);
-  return num;
-}
-
-function priceExemption(pizzaType,toppings,toppingTotal,box,sizeTotal){
-  if(!(pizzaType==="Build a peetz")){
-    if(!box){
-      toppingTotal +=2;
-    }else if(box){
-      toppingTotal -=2;
-    }
-    tempTotal = sizeTotal + tempNum;
-    $("#priceSection").text("$" + (tempTotal));
-  }
-  else if(pizzaType==="Build a peetz" && toppingTotal >= 4){
-    if(!box){
-      tempNum +=2;
-    }else if(box){
-      tempNum -=2;
-    }
-    tempTotal = sizeTotal + tempNum;
-    $("#priceSection").text("$" + (tempTotal));
-  }
-  console.log("topping total: " +toppingTotal);
-  return tempNum;
-}
-
-
 function pizza(pizzaType,pizzaSize,cheese,sauce){
   this.pizzaType = pizzaType;
   this.pizzaSize = pizzaSize;
@@ -85,6 +40,8 @@ $(document).ready(function(){
   var initialTotal = 0;
   var sizeTotal = 0;
   var toppingTotal = 0;
+  var sauceTotal = 0;
+  var cheeseTotal = 0;
 
   var pizzaType;
   var sauce = $("#selectSauce").val();
@@ -139,47 +96,84 @@ $(document).ready(function(){
   var box1 = true;
   $("input#tomatoes").change(function() {
     box1 = getTopping("tomatoes",box1,toppings,toppingTotal);
-    toppingTotal += priceExemption(pizzaType,toppings,toppingTotal,box1,sizeTotal);
+    toppingTotal = (toppings.length * 2);
+    $("#priceSection").text("$" + (sizeTotal+toppingTotal+sauceTotal));
   });
   var box2 = true;
   $("input#sundried").change(function() {
     box2 = getTopping("sundried",box2,toppings,toppingTotal);
-    toppingTotal += priceExemption(pizzaType,toppings,toppingTotal,box2,sizeTotal);
+    toppingTotal = (toppings.length * 2);
+    $("#priceSection").text("$" + (sizeTotal+toppingTotal+sauceTotal));
+
   });
   var box3 = true;
   $("input#onions").change(function() {
     box3 = getTopping("onions",box3,toppings,toppingTotal);
-    toppingTotal += priceExemption(pizzaType,toppings,toppingTotal,box3,sizeTotal);
+    toppingTotal = (toppings.length * 2);
+    $("#priceSection").text("$" + (sizeTotal+toppingTotal+sauceTotal));
+
   });
   var box4 = true;
   $("input#tempeh").change(function() {
     box4 = getTopping("tempeh",box4,toppings,toppingTotal);
-    toppingTotal += priceExemption(pizzaType,toppings,toppingTotal,box4,sizeTotal);
+    toppingTotal = (toppings.length * 2);
+    $("#priceSection").text("$" + (sizeTotal+toppingTotal+sauceTotal));
+
   });
   var box5 = true;
   $("input#peppers").change(function() {
     box5 = getTopping("peppers",box5,toppings,toppingTotal);
-    toppingTotal += priceExemption(pizzaType,toppings,toppingTotal,box5,sizeTotal);
+    toppingTotal = (toppings.length * 2);
+    $("#priceSection").text("$" + (sizeTotal+toppingTotal+sauceTotal));
+
   });
   var box6 = true;
   $("input#jalapenos").change(function() {
     box6 = getTopping("jalapenos",box6,toppings,toppingTotal);
-    toppingTotal += priceExemption(pizzaType,toppings,toppingTotal,box6,sizeTotal);
+    toppingTotal = (toppings.length * 2);
+    $("#priceSection").text("$" + (sizeTotal+toppingTotal+sauceTotal));
+
   });
   var box7 = true;
   $("input#basil").change(function() {
     box7 = getTopping("basil",box7,toppings,toppingTotal);
-    toppingTotal += priceExemption(pizzaType,toppings,toppingTotal,box7,sizeTotal);
+    toppingTotal = (toppings.length * 2);
+    $("#priceSection").text("$" + (sizeTotal+toppingTotal+sauceTotal));
+
   });
   var box8 = true;
   $("input#garlic").change(function() {
     box8 = getTopping("garlic",box8,toppings,toppingTotal);
-    toppingTotal += priceExemption(pizzaType,toppings,toppingTotal,box8,sizeTotal);
+    toppingTotal = (toppings.length * 2);
+    $("#priceSection").text("$" + (sizeTotal+toppingTotal+sauceTotal));
+
   });
   var box9 = true;
   $("input#tofu").change(function() {
     box9 = getTopping("tofu",box9,toppings,toppingTotal);
-    toppingTotal += priceExemption(pizzaType,toppings,toppingTotal,box9,sizeTotal);
+    toppingTotal = (toppings.length * 2);
+    $("#priceSection").text("$" + (sizeTotal+toppingTotal+sauceTotal));
+
+  });
+
+  $("select#selectSauce").change(function() {
+    sauce = $("#selectSauce").val();
+    if(sauce === "Pesto sauce (+ $3)"){
+      sauceTotal = 3;
+    }else if(sauce === "Tomatoe red sauce"){
+      sauceTotal = 0;
+    }
+    $("#priceSection").text("$" + (sizeTotal+toppingTotal+sauceTotal));
+  });
+
+  $("select#selectCheese").change(function() {
+    sauce = $("#selectCheese").val();
+    if(sauce === "Pesto sauce (+ $3)"){
+      sauceTotal = 3;
+    }else if(sauce === "Tomatoe red sauce"){
+      sauceTotal = 0;
+    }
+    $("#priceSection").text("$" + (sizeTotal+toppingTotal+sauceTotal));
   });
 
   $("form#orderForm").submit(function(event) {
