@@ -25,7 +25,7 @@ function getTopping(input,box,array,toppingPrice){
   }
   return box;
 }
-
+//object
 function pizza(pizzaType,pizzaSize,cheese,sauce,price){
   this.pizzaType = pizzaType;
   this.pizzaSize = pizzaSize;
@@ -39,10 +39,6 @@ pizza.prototype.saveToppings = function (array) {
   for(var i=0;i<array.length;++i){
     this.toppings.push(array[i]);
   }
-};
-
-pizza.prototype.printPeetz = function () {
-  return "<p>Your order for a "+pizza.pizzaSize+" "+pizza.pizzaType+", "+pizza.toppings+"</p><p>Your account has been charged $<u>"+pizza.price+"</u></p><p>Your order will be ready in approximately 45 minutes</p>";
 };
 
 pizza.prototype.pizzaTypePrint = function(){
@@ -63,27 +59,6 @@ pizza.prototype.saucePrint = function(){
 pizza.prototype.pricePrint = function(){
   return this.price;
 };
-
-
-function receiptBuild(section,pizza) {
-  alert("order placed!");
-  $("#"+section).append("<p>Your order for a "+pizza.pizzaSize+" "+pizza.pizzaType+" with "+pizza.cheese+", "+pizza.sauce+", "+pizza.toppings+"</p><p>Your account has been charged $<u>"+pizza.price+"</u></p><p>Your order will be ready in approximately 45 minutes</p>");
-};
-
-// pizza.prototype.receiptBuild = function (section) {
-//   alert("order placed!");
-//   $("#"+section).append("<p>Your order for a "+this.pizzaSize+" "+this.pizzaType+" with "+this.cheese+", "+this.sauce+", "+this.toppings+"</p><p>Your account has been charged $<u>"+this.price+"</u></p><p>Your order will be ready in approximately 45 minutes</p>");
-// };
-
-function receipt(section, pizza) {
-  alert("order placed!");
-  $("#"+section).append("<p>Your order for a "+pizza.pizzaSize+" "+pizza.pizzaType+", "+pizza.toppings+"</p><p>Your account has been charged $<u>"+pizza.price+"</u></p><p>Your order will be ready in approximately 45 minutes</p>");
-};
-
-// pizza.prototype.receipt = function (section) {
-//   alert("order placed!");
-//   $("#"+section).append("<p>Your order for a "+this.pizzaSize+" "+this.pizzaType+", "+this.toppings+"</p><p>Your account has been charged $<u>"+this.price+"</u></p><p>Your order will be ready in approximately 45 minutes</p>");
-// };
 
 //front-end
 $(document).ready(function(){
